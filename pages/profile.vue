@@ -41,7 +41,6 @@
     </main>
   </div>
 </template>
-
 <script>
 import { ref, onMounted } from 'vue';
 import { useAuthStore } from '~/stores/auth';
@@ -49,7 +48,6 @@ import { useReviewStore } from '~/stores/review';
 import { useRatingStore } from '~/stores/rating';
 import { api } from '~/api/index.js';
 import { useRouter } from 'vue-router';
-
 export default {
   setup() {
     const router = useRouter();
@@ -58,7 +56,6 @@ export default {
     const ratingStore = useRatingStore();
     const user = ref(null);
     const activeTab = ref('profile');
-
     const fetchUserData = async () => {
       try {
         const res = await api.get(`/users/${authStore.authData.id}`, {
@@ -71,7 +68,6 @@ export default {
         console.error('Failed to fetch user data:', error);
       }
     };
-
     const deleteAccount = async () => {
       try {
         await authStore.deleteAccount();
@@ -80,13 +76,11 @@ export default {
         console.error("Ошибка при удалении аккаунта:", e.message);
       }
     };
-
     onMounted(() => {
       fetchUserData();
       reviewStore.fetchReviewsByUserId();
       ratingStore.fetchRatingByUserId();
     });
-
     return {
       user,
       activeTab,
@@ -98,29 +92,24 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 .profile-page {
   background-color: #f8f9fa;
   font-family: 'Helvetica Neue', sans-serif;
 }
-
 .header {
   background-color: #343a40;
   color: #ffffff;
   padding: 10px;
 }
-
 .user-controls {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .content {
   padding: 20px;
 }
-
 .stats {
   background-color: #ffffff;
   border-radius: 8px;
@@ -128,20 +117,17 @@ export default {
   margin-bottom: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 .profile {
   background-color: #ffffff;
   border-radius: 8px;
   padding: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 .tabs {
   display: flex;
   justify-content: space-around;
   margin-bottom: 20px;
 }
-
 .tabs button {
   flex: 1;
   padding: 10px;
@@ -152,19 +138,15 @@ export default {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 .tabs button.active {
   background-color: #007bff;
 }
-
 .tabs button:hover:not(.active) {
   background-color: #5a6268;
 }
-
 .tab-content {
   animation: fadeIn 0.3s ease-in;
 }
-
 .review-item {
   background-color: #f8f9fa;
   border-radius: 4px;
@@ -172,18 +154,15 @@ export default {
   margin-bottom: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
-
 .comments {
   margin-top: 10px;
   padding-left: 20px;
 }
-
 .actions {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
-
 .actions .delete {
   background-color: #dc3545;
   border: none;
@@ -193,11 +172,9 @@ export default {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 .actions .delete:hover {
   background-color: #bd2130;
 }
-
 .actions button {
   padding: 10px 20px;
   border: none;
@@ -205,7 +182,6 @@ export default {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 @keyframes fadeIn {
   from {
     opacity: 0;
