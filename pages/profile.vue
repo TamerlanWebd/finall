@@ -13,7 +13,7 @@
       </section>
       <section class="profile">
         <nav class="tabs">
-          <button @click="activeTab = 'profile'" :class="{ active: activeTab === 'profile' }">MY PROFILE</button>
+          <button @click="$router.push('/profile')">MY PROFILE</button>
           <button @click="$router.push('/myReview')">MY REVIEWS</button>
           <button @click="$router.push('/myScores')">MY SCORES</button>
         </nav>

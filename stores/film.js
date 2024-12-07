@@ -56,6 +56,7 @@ export const useFilmStore = defineStore('film', () => {
         countPage,
         currentPage,
         fetchfilmById,
-        film
+        film,
+
     }
 });

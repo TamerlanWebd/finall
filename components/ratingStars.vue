@@ -6,7 +6,7 @@ const props = defineProps({
   }
 });
 const ratingStore = useRatingStore();
-ratingStore.fethRatingByUserId();
+ratingStore.fetchRatingByUserId();
 const sendRating = async (num: number) => {
   await ratingStore.addRating({
     film_id: props.filmId,
@@ -21,9 +21,9 @@ const sendRating = async (num: number) => {
   <ul class="rating-stars">
     <template v-for="i in 5" :key="i">
       <li class="star-item">
-        <template v-if="ratingStore.UserRatingByFilmId(filmId)">
+        <template v-if="ratingStore.userRatingByFilmId(filmId)">
           <span class="star-link">
-            <i v-if="i <= (ratingStore.UserRatingByFilmId(filmId)).score" class="bi bi-star-fill"></i>
+            <i v-if="i <= (ratingStore.userRatingByFilmId(filmId)).score" class="bi bi-star-fill"></i>
             <i v-else class="bi bi-star"></i>
           </span>
         </template>
